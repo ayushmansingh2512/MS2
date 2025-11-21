@@ -133,7 +133,7 @@ const PublicProfile = () => {
                 {user.posts.length > 0 ? (
                     <Grid container spacing={3}>
                         {user.posts.map((post) => (
-                            <Grid item xs={12} sm={6} md={4} key={post.id}>
+                            <Grid xs={12} sm={6} md={4} key={post.id}>
                                 <Card sx={{
                                     height: '100%',
                                     display: 'flex',

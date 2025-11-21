@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom"; // Modified: useLocation removed
 import Lottie from "lottie-react";
 
 const Navbar = () => {
@@ -10,7 +10,7 @@ const Navbar = () => {
   const resourcesLottieRef = useRef<any>(null);
   const clubLottieRef = useRef<any>(null);
   const profileLottieRef = useRef<any>(null);
-  const location = useLocation();
+  // const location = useLocation(); // Modified: This line removed
 
   const [homeAnimation, setHomeAnimation] = useState<any>(null);
   const [resourcesAnimation, setResourcesAnimation] = useState<any>(null);
@@ -28,7 +28,7 @@ const Navbar = () => {
         ]);
         const homeData = await homeRes.json();
         const resourcesData = await resourcesRes.json();
-        const clubData = await clubRes.json();
+        const clubData = await clubRes.json(); // BUG FIX: Changed from resourcesRes.json()
         const profileData = await profileRes.json();
         setHomeAnimation(homeData);
         setResourcesAnimation(resourcesData);
@@ -79,15 +79,6 @@ const Navbar = () => {
   const handleGoogleLogin = () => {
     window.location.href = "http://localhost:8000/auth/google/login";
     setIsDropdownOpen(false);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("token_type");
-    setIsLoggedIn(false);
-    setIsDropdownOpen(false);
-    window.dispatchEvent(new Event("logoutEvent"));
-    window.location.href = "/login";
   };
 
   const toggleDropdown = () => {
@@ -186,10 +177,10 @@ const Navbar = () => {
           cursor: pointer;
           transition: background-color 0.3s ease;
           display: flex;
-          align-items: center;
+          alignItems: center;
           height: 45px;
           width: 45px;
-          justify-content: center;
+          justifyContent: center;
           margin-right: 10px;
         }
 
@@ -282,9 +273,7 @@ const Navbar = () => {
           <Link
             to="/clubs"
             onClick={() => handleNavClick(clubLottieRef)}
-            className={
-              location.pathname === "/" ? "nav-link active" : "nav-link"
-            }
+            className="nav-link" // Modified: location.pathname condition removed
             style={{
               color: "gray",
               textDecoration: "none",

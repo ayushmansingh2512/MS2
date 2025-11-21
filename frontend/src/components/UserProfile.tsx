@@ -256,7 +256,7 @@ const UserProfile = () => {
               Welcome back, {user.username || 'User'}! 👋
             </Typography>
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid xs={12} sm={6} md={4}>
                 <Paper sx={{ p: 3, borderRadius: 3, bgcolor: '#e3f2fd', color: '#1565c0', height: '100%' }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
                     <Typography variant="h6">Posts Created</Typography>
@@ -265,7 +265,7 @@ const UserProfile = () => {
                   <Typography variant="h2" fontWeight="bold">{user.posts.length}</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid xs={12} sm={6} md={4}>
                 <Paper sx={{ p: 3, borderRadius: 3, bgcolor: '#f3e5f5', color: '#7b1fa2', height: '100%' }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
                     <Typography variant="h6">Bookmarks</Typography>
@@ -274,7 +274,7 @@ const UserProfile = () => {
                   <Typography variant="h2" fontWeight="bold">{user.bookmarks.length}</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid xs={12} md={4}>
                 <Paper sx={{ p: 3, borderRadius: 3, bgcolor: '#fff', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                   <Button
                     variant="contained"
@@ -306,7 +306,7 @@ const UserProfile = () => {
             ) : (
               <Grid container spacing={3}>
                 {user.posts.map((post) => (
-                  <Grid item xs={12} sm={6} lg={4} key={post.id}>
+                  <Grid xs={12} sm={6} lg={4} key={post.id}>
                     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 3, transition: '0.3s', '&:hover': { transform: 'translateY(-4px)', boxShadow: 4 } }}>
                       <CardMedia
                         component="img"
@@ -359,7 +359,7 @@ const UserProfile = () => {
             ) : (
               <Grid container spacing={3}>
                 {user.bookmarks.map((bookmark) => (
-                  <Grid item xs={12} sm={6} lg={4} key={bookmark.id}>
+                  <Grid xs={12} sm={6} lg={4} key={bookmark.id}>
                     <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 3 }}>
                       <CardMedia
                         component="img"
@@ -396,7 +396,7 @@ const UserProfile = () => {
             <Paper sx={{ p: 4, borderRadius: 3 }}>
               <Typography variant="h6" gutterBottom>Profile Information</Typography>
               <Grid container spacing={3} sx={{ mt: 1 }}>
-                <Grid item xs={12}>
+                <Grid xs={12}>
                   <TextField
                     label="Email Address"
                     value={user.email}
@@ -405,7 +405,7 @@ const UserProfile = () => {
                     helperText="Email cannot be changed"
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid xs={12}>
                   <TextField
                     label="Username"
                     value={newUsername}
@@ -414,7 +414,7 @@ const UserProfile = () => {
                     helperText="This is how you'll appear to others"
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid xs={12}>
                   <Button variant="contained" size="large" onClick={handleUsernameUpdate} sx={{ mt: 1 }}>
                     Save Changes
                   </Button>

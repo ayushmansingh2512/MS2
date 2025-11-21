@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 
-const Mobnav = () => {
+const MobNav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -10,7 +10,7 @@ const Mobnav = () => {
   const resourcesLottieRef = useRef<any>(null);
   const clubLottieRef = useRef<any>(null);
   const profileLottieRef = useRef<any>(null);
-  const location = useLocation();
+  
 
   const [homeAnimation, setHomeAnimation] = useState<any>(null);
   const [resourcesAnimation, setResourcesAnimation] = useState<any>(null);
@@ -74,19 +74,9 @@ const Mobnav = () => {
     };
   }, []);
 
-const handleGoogleLogin = () => {
-  window.location.href = "http://localhost:8000/auth/google/login";
-  setIsDropdownOpen(false);
-};
 
-  const handleLogout = () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("token_type");
-    setIsLoggedIn(false);
-    setIsDropdownOpen(false);
-    window.dispatchEvent(new Event("logoutEvent"));
-    window.location.href = "/login";
-  };
+
+  
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -370,7 +360,7 @@ const handleGoogleLogin = () => {
     borderRadius: "8px",
     boxSizing: "border-box",
   }}
-  onClick={(e) => {
+  onClick={() => {
     console.log("Anchor tag clicked!");
     setIsDropdownOpen(false);
     // Don't prevent default - let the anchor handle the navigation
@@ -390,4 +380,4 @@ const handleGoogleLogin = () => {
   );
 };
 
-export default Mobnav;
+export default MobNav;
